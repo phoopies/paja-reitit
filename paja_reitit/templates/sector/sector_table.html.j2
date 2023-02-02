@@ -1,0 +1,32 @@
+
+{% macro sector_tr(sector)%}
+<tr>
+  <td>{{sector.name}}</td>
+  <td>{{sector.current_route_count}}</td>
+  <td align="right">
+    <a class="btn btn-sm border-0" href="{{url_for('sector_blueprint.clear_sector', sector_id=sector.id)}}">
+      <i class="bi bi-recycle"></i>
+    </a>  
+  </td>
+  <td align="right">
+    <a class="btn btn-sm border-0" href="{{url_for('sector_blueprint.delete_sector', sector_id=sector.id)}}">
+      <i class="bi bi-trash"></i>
+    </a>  
+  </td>
+</tr>
+{% endmacro %}
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Routes</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sector in sectors %}
+      {{sector_tr(sector)}}
+    {% endfor %}
+  </tbody>
+<table

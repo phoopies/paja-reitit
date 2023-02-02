@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+@import url("../plugins/bootstrap/css/bootstrap.min.css");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  /* color: #888; */
+  font-weight: 400;
+  background: #f4f7fa;
+  position: relative;
+}

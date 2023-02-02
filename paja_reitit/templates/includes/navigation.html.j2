@@ -1,0 +1,20 @@
+{% macro nav_item(href, label)%}
+<a class="nav-item nav-link" href="/{{href}}"> {{label}} </a>
+{% endmacro %}
+
+<!--Navigation bar -->
+<nav class="justify-content-between navbar navbar-dark navbar-expand-sm bg-dark px-2">
+  <!--LEFT -->
+    <div class="navbar-nav">
+    {{nav_item("", "Reitit")}}
+    {{nav_item("routesetters", "Retet")}}
+    {{nav_item("sectors", "Sektorit")}}
+    {{nav_item("colors", "Värit")}}
+  </div>
+  <!-- END LEFT -->
+
+
+  <!-- RIGHT -->
+    <a class="navbar-brand mx-2" href="/dashboard">Asiakasnäkymä</a>
+  <!-- END RIGHT -->
+</nav>

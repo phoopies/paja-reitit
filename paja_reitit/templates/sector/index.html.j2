@@ -1,0 +1,7 @@
+{# Template file is in Jinja syntax:
+https://jinja.palletsprojects.com/en/3.1.x/
+#}
+{% extends "layouts/base.html.j2" %} {% block content %}
+  {% include 'sector/add_sector_form.html.j2' %}
+  {% include 'sector/sector_table.html.j2' %}
+{% endblock %}

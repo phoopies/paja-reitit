@@ -1,0 +1,22 @@
+
+{% macro form_input(func) %}
+  <div class="form-group mb-2">
+    {{ func.label(class='') }}
+    {{ func(class="form-control")}}
+  </div>
+{% endmacro %}
+
+
+<form role="form" method="post">
+  {{ form.hidden_tag() }}   
+
+  {{form_input(form.setter)}}
+  {{form_input(form.grade)}}
+  {{form_input(form.color)}}
+  {{form_input(form.sector)}}
+
+  <button type="submit" name="create" class="btn btn-primary shadow-2 my-4 w-100">Lisää reitti</button>
+</form>
+{% if new_route %}
+  <p class="text-success"> Added {{new_route.color}} route with grade {{new_route.grade}} by {{new_route.setter}} to sector {{new_route.sector}}</p>
+{% endif %}

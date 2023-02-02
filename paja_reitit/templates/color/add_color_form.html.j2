@@ -1,0 +1,23 @@
+
+{% macro form_input(field, label = none) %}
+  <div class="form-group mb-2">
+    {{ label or field.label(class='') }}
+    {{ field(class="form-control")}}
+    {%if field.errors %}
+      {% for error in field.errors %}
+        <p class="text-error">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endmacro %}
+
+
+<form role="form" method="post">
+  {{ form.hidden_tag() }}
+
+  {{form_input(form.name)}}
+  {{form_input(form.code, "Color")}}
+
+  <button type="submit" name="add" class="btn btn-primary shadow-2 my-4 w-100">Lisää väri</button>
+
+</form>

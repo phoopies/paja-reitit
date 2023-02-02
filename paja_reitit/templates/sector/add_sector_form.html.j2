@@ -1,0 +1,21 @@
+
+{% macro form_input(field) %}
+  <div class="form-group mb-2">
+    {{ field.label(class='') }}
+    {{ field(class="form-control")}}
+    {%if field.errors %}
+      {% for error in field.errors %}
+        <p class="text-error">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endmacro %}
+
+
+<form role="form" method="post">
+  {{ form.hidden_tag() }}   
+
+  {{form_input(form.name)}}
+
+  <button type="submit" name="add" class="btn btn-primary shadow-2 my-4 w-100">Lisää sektori</button>
+</form>

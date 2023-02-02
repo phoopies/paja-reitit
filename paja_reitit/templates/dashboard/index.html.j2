@@ -1,0 +1,54 @@
+{% macro create(route)%}
+<div class="list-group-item list-group-item-action flex-column align-items-start"
+  style="border-left: 1em solid {{route.color.code or 'transparent'}}">
+  <div class="d-flex w-100 justify-content-between">
+    <div class="d-flex align-items-center w-50">
+      <div class="font-weight-bold me-2 text-center" style="width: 4em">
+        <h2>{{route.grade}}</h2>
+      </div>
+      <div class="mb-0">
+        <h5 class="mb-0">{{route.name}}</h5>
+        <h6 class="mb-0 text-muted">{{route.setter or "Anonymous"}}</h6>
+      </div>
+    </div>
+    <div>
+      {% if route.date_ago == "Today" %}
+        <span class="badge bg-success mx-2">New!</span>
+      {% endif %}
+      <small>{{route.date_ago}}</small>
+    </div>
+  </div>
+</div>
+{% endmacro%}
+
+{% extends "layouts/dashboard.html.j2" %} {% block content %}
+<div class="d-flex flex-column">
+  <div class="m-4 d-flex justify-content-between align-items-center">
+  <div class="d-flex flex-row">
+    <img src="{{ config.ASSETS_ROOT }}/images/logo.png" alt="logo" class="me-2" style="object-fit: cover; height: 100px">
+    <div>
+      <h1 class="font-weight-bold">{{time_now}}</h1>
+      <h4 class="text-muted">{{date_now}}</h4>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row gap-2 align-items-end card p-2">
+    <h1 class="font-weight-bold">{{route_count}}</h1>
+    <h4 class="text-muted">Routes</h4>
+  </div>
+  </div>
+
+  <div class="d-flex justify-content-center my-4 w-100" style="max-height: 50vh;">
+    {{img}}
+  </div>
+  <div class="w-100">
+    <h5 class="mx-3">Newest routes</h5>
+    <div class="list-group list-group-flush">
+      {% for route in routes %}
+      {{create(route)}}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

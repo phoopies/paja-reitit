@@ -1,0 +1,33 @@
+
+{% macro route_tr(route)%}
+<tr>
+  <td>{{route.created_at.strftime('%Y-%m-%d')}}</td>
+  <td>{{route.setter or "Anonymous"}}</td>
+  <td>{{route.grade}}</td>
+  <td>{{route.color}}</td>
+  <td>{{route.sector}}</td>
+  <td align="right">
+    <a class="btn btn-sm border-0" href="/route/delete/{{route.id}}">
+      <i class="bi bi-trash"></i>
+    </a>  
+  </td>
+</tr>
+{% endmacro %}
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Created</th>
+      <th scope="col">Setter</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Color</th>
+      <th scope="col">Sector</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for route in routes %}
+      {{route_tr(route)}}
+    {% endfor %}
+  </tbody>
+<table
