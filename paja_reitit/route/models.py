@@ -15,7 +15,7 @@ class Route(db.Model):
 
     id            = db.Column(db.Integer, primary_key=True)
     grade         = db.Column(db.String(4))
-    created_at    = db.Column(db.DateTime, default=datetime.now())
+    created_at    = db.Column(db.DateTime, default=datetime.utcnow())
     deleted       = db.Column(db.Boolean, default=False)
     
     color_id      = db.Column(db.Integer, db.ForeignKey('color.id'))
