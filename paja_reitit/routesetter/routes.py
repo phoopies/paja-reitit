@@ -25,4 +25,4 @@ def delete_setter(setter_id: str):
     setter = Routesetter.find_by_id(setter_id)
     if setter:
         setter.delete_from_db()
-    return redirect(url_for('routesetter_blueprint.routesetters_view'))
+    return redirect(url_for('routesetter.routesetters_view'))

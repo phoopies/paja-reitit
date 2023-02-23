@@ -41,4 +41,4 @@ def delete_sector(sector_id: str):
     sector = Sector.find_by_id(sector_id)
     if sector:
         sector.delete_from_db()
-    return redirect(url_for('sector_blueprint.sectors_view'))
+    return redirect(url_for('sector.sectors_view'))

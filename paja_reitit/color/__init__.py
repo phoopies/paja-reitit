@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'color_blueprint',
+    'color',
     __name__,
     url_prefix='/colors'
 )

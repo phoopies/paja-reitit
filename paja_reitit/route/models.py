@@ -5,6 +5,7 @@ from typing import List, Optional
 from paja_reitit import db
 from sqlalchemy.orm import Mapped, Query
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.sql.expression import text
 from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import datetime
 from paja_reitit.route.util import get_name, get_date_ago
@@ -66,10 +67,10 @@ class Route(db.Model):
         return cls.query.filter_by(id=_id).first()
     
     @classmethod
-    def get_all_on_wall(cls, sort=True) -> Query["Route"]:
+    def get_all_on_wall(cls, sort_by="created_at desc") -> Query["Route"]:
         routes = cls.query.filter_by(deleted=False)
-        if sort:
-            routes = routes.order_by(cls.created_at.desc())
+        if sort_by:
+            routes = routes.order_by(text(sort_by))
         return routes
     
     def save(self) -> None:

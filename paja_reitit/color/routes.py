@@ -29,4 +29,4 @@ def delete_color(color_id: str):
     color = Color.find_by_id(color_id)
     if color:
         color.delete_from_db()
-    return redirect(url_for('color_blueprint.colors_view'))
+    return redirect(url_for('color.colors_view'))

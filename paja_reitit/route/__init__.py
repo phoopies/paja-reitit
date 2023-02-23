@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'route_blueprint',
+    'route',
     __name__,
     url_prefix=''
 )

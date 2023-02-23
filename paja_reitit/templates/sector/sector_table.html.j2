@@ -4,12 +4,12 @@
   <td>{{sector.name}}</td>
   <td>{{sector.current_route_count}}</td>
   <td align="right">
-    <a class="btn btn-sm border-0" href="{{url_for('sector_blueprint.clear_sector', sector_id=sector.id)}}">
+    <a class="btn btn-sm border-0" href="{{url_for('sector.clear_sector', sector_id=sector.id)}}">
       <i class="bi bi-recycle"></i>
     </a>  
   </td>
   <td align="right">
-    <a class="btn btn-sm border-0" href="{{url_for('sector_blueprint.delete_sector', sector_id=sector.id)}}">
+    <a class="btn btn-sm border-0" href="{{url_for('sector.delete_sector', sector_id=sector.id)}}">
       <i class="bi bi-trash"></i>
     </a>  
   </td>

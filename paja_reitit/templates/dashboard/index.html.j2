@@ -1,25 +1,4 @@
-{% macro create(route)%}
-<div class="list-group-item list-group-item-action flex-column align-items-start"
-  style="border-left: 1em solid {{route.color.code or 'transparent'}}">
-  <div class="d-flex w-100 justify-content-between">
-    <div class="d-flex align-items-center w-50">
-      <div class="font-weight-bold me-2 text-center" style="width: 4em">
-        <h2>{{route.grade}}</h2>
-      </div>
-      <div class="mb-0">
-        <h5 class="mb-0">{{route.name}}</h5>
-        <h6 class="mb-0 text-muted">{{route.setter or "Anonymous"}}</h6>
-      </div>
-    </div>
-    <div>
-      {% if route.date_ago == "Today" %}
-        <span class="badge bg-success mx-2">New!</span>
-      {% endif %}
-      <small>{{route.date_ago}}</small>
-    </div>
-  </div>
-</div>
-{% endmacro%}
+{% from 'dashboard/route_macro.html.j2' import create %}
 
 {% extends "layouts/dashboard.html.j2" %} {% block content %}
 <div class="d-flex flex-column">

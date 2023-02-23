@@ -1,0 +1,52 @@
+{% from 'dashboard/route_macro.html.j2' import create %}
+
+{% extends "layouts/dashboard.html.j2" %} {% block content %}
+  <div class="w-100 m-2">
+  <div class="d-flex justify-content-between mb-2 align-items-center m-3">
+    <div>
+        <h5>Routes</h5>
+        <small>(Hold route card to reveal the grade)</small>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{sort_by}}
+      </button>
+      <ul class="dropdown-menu">
+      {% for sort_option in sort_options %}
+        <li><a class="dropdown-item {{'active' if sort_by == sort_option else ''}}" href="{{url_for('dashboard.routes', sort_by=sort_option)}}"> {{sort_option}} </a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+    <div class="list-group list-group-flush">
+      {% for route in routes %}
+      <div onMouseDown="toggleGrade({{route.id}}, '{{route.grade}}')">
+        {{create(route, false)}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+function toggleGrade(id, grade) {
+  const el = document.getElementById(id);
+  if (el.innerHTML === 'X') {
+    revealGrade(el, grade);
+  } else {
+    hideGrade(el);
+  }
+}
+
+function revealGrade(el, grade) {
+  el.innerHTML = grade;
+}
+
+function hideGrade(el) {
+  el.innerHTML = 'X';
+}
+</script>
+{% endblock %}

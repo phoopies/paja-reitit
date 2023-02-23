@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'sector_blueprint',
+    'sector',
     __name__,
     url_prefix='/sectors'
 )

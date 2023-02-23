@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'routesetter_blueprint',
+    'routesetter',
     __name__,
     url_prefix='/routesetters'
 )
