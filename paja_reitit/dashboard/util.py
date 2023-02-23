@@ -46,7 +46,7 @@ def figure_to_html_img(fig: Figure) -> str:
     return f"<img class='w-100' style='object-fit: scale-down;' src='data:image/png;base64,{data}'/>"
 
 def get_current_date_and_time() -> Tuple[str, str]:
-    now = datetime.now()
+    now = datetime.utcnow()
     date = now.strftime("%d.%m.%Y")
     time = now.strftime("%A %H:%M")
     return (date, time)
